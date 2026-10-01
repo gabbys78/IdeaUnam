@@ -17,7 +17,7 @@ return new class extends Migration
             $table->Text('descripcion');
             $table->String('autor');
             $table->string('estado')->default('resgitrada');
-            $table->foreignId('categoriaId')->constrained('categorias');
+            $table->foreignId('categoria_id')->constrained('categorias');
             $table->timestamps();
         });
     }
