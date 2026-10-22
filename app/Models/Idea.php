@@ -3,12 +3,19 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Idea extends Model
+
 {
-  
-    public function ideas(): HasMany
-    {
-    return $this->hasMany(Idea::class);
-    }//
+    use SoftDeletes;
+
+protected $fillable = ['titulo', 'descripcion', 'estado', 'autor', 'categoria_id'];
+
+public function categoria()
+{
+    return $this->belongsTo(Categoria::class, 'categoria_id');
 }
+}
+
