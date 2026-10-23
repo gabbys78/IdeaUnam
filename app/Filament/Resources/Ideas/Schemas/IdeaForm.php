@@ -4,13 +4,11 @@
 
 namespace App\Filament\Resources\Ideas\Schemas;
 
-use App\Filament\Resources\Ideas\Schemas\IdeaInfolist; 
 use Filament\Schemas\Schema;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Textarea;
 use Filament\Forms\Components\Select;
 use App\Helpers\EstadoIdea;
-
 
 class IdeaForm
 {
@@ -32,6 +30,8 @@ class IdeaForm
                     ->columnSpanFull(),
                 TextInput::make('autor')
                     ->label('Autor')
+                    ->helperText('Escribe el nombre completo del autor de la idea')
+                    ->placeholder('Ej. Gabriela Pacheco')
                     ->required(),
                 Select::make('estado')
                     ->label('Estado')

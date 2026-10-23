@@ -15,6 +15,7 @@ use Filament\Resources\Resource;
 use Filament\Schemas\Schema;
 use Filament\Support\Icons\Heroicon;
 use Filament\Tables\Table;
+use App\Filament\Resources\Ideas\Schemas\IdeaInfolist;
 
 class IdeaResource extends Resource
 {
@@ -54,4 +55,6 @@ class IdeaResource extends Resource
             'edit' => EditIdea::route('/{record}/edit'),
         ];
     }
+
+    
 }
