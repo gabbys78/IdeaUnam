@@ -11,7 +11,8 @@ class Idea extends Model
 {
     use SoftDeletes;
 
-protected $fillable = ['titulo', 'descripcion', 'estado', 'autor', 'categoria_id'];
+protected $fillable = ['titulo', 'descripcion', 'estado', 'autor', 'categoria_id','observacion'];
+
 
 public function categoria()
 {
