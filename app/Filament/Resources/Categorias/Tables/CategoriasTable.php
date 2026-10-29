@@ -39,6 +39,8 @@ class CategoriasTable
             ->actions([
                 // EditAction::make(),
             ])
+            ->recordUrl(null)
+            ->recordAction(null)
             ->bulkActions([
                 BulkActionGroup::make([
                    // DeleteBulkAction::make(),

@@ -9,6 +9,7 @@ use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Textarea;
 use Filament\Forms\Components\Select;
 use App\Helpers\EstadoIdea;
+use Filament\Schemas\Components\Utilities\Get;
 
 class IdeaForm
 {
@@ -21,6 +22,9 @@ class IdeaForm
                     ->helperText('Escribe un titulo que sea ilustrativa')
                     ->placeholder('Ej Aplicación de comida')
                     ->required()
+                    ->unique()
+                     ->validationMessages([
+                     'unique' => 'Ya existe una categoria con el mismo nombre'])
                     ->maxLength(255),
                 Textarea::make('descripcion')
                     ->label('Descripción de tu idea')
@@ -33,13 +37,23 @@ class IdeaForm
                     ->helperText('Escribe el nombre completo del autor de la idea')
                     ->placeholder('Ej. Gabriela Pacheco')
                     ->required(),
-                Select::make('estado')
-                    ->label('Estado')
-                    ->options(EstadoIdea::opciones())
-                    ->required(),
                 Select::make('categoria_id')
                     ->label('Categoría')
                     ->relationship('categoria', 'nombre')
+                    ->required(),
+                 Select::make('estado')
+                    ->label('Estado')
+                    ->options(EstadoIdea::opciones())
+                    ->required()
+                    ->default('registrada')
+                    ->hiddenOn('create')
+                    ->live(),
+                Textarea::make('observacion')
+                    ->label('Motivo de rechazo')
+                    ->visible(fn (Get $get) =>[
+                        $get('estado') === 'rechazada'
+                    ])
+                    ->maxLength(200)
                     ->required(),
             ]);
     }

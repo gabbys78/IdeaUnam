@@ -17,6 +17,9 @@ class CategoriaForm
                     ->helperText('Ingrese el nombre a la categoría')
                     //->default('valor')
                     ->placeHolder('Ej categoría')
+                    ->unique()
+                    ->validationMessages([
+                     'unique' => 'Ya existe una categoria con el mismo nombre'])
                     ->required(),
 
                 Textarea::make('descripcion')

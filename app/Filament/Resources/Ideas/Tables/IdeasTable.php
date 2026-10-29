@@ -134,6 +134,9 @@ class IdeasTable
                     })
                     ->visible(fn (Idea $record) => $record->estado !== 'rechazada')
             ])
+            ->recordUrl(null)
+            ->recordAction(null)
+        
             ->bulkActions([
                 BulkActionGroup::make([
                     // DeleteBulkAction::make(),
